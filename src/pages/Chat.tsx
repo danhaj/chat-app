@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import MessagesList from '../components/MessagesList';
 
-export const Chat = () => {
+const Chat: React.FC = () => {
+  const user = useContext(UserContext);
+
+  if (!user) return <Redirect to='/' />;
+
   return <MessagesList />;
 };
+
+export default Chat;

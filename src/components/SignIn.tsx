@@ -1,14 +1,21 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { auth } from '../services/firebase';
 import Input from './Input';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleSignInSubmit = async (ev: FormEvent): Promise<void> => {
     ev.preventDefault();
-    const res = await auth.signInWithEmailAndPassword(email, password);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      history.push('/chat');
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   const handleSignUpSubmit = (ev: FormEvent): void => {
