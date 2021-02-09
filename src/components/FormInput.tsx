@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FormEventHandler } from 'react';
 
-interface InputProps {
+interface FormInputProps {
   type: string;
   label?: string;
   value?: string;
@@ -8,7 +8,7 @@ interface InputProps {
   onClick?: FormEventHandler;
 }
 
-const Input: React.FC<InputProps> = ({
+const FormInput: React.FC<FormInputProps> = ({
   type,
   label,
   value,
@@ -42,4 +42,4 @@ const Input: React.FC<InputProps> = ({
   }
 };
 
-export default Input;
+export default FormInput;

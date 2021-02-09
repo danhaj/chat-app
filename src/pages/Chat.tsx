@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext';
 import { MessagesContext } from '../context/MessagesContext';
 import { Message } from '../types';
 import MessagesList from '../components/MessagesList';
+import SendMessage from '../components/SendMessage';
 
 const Chat: React.FC = () => {
   const user = useContext(UserContext);
@@ -13,6 +14,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     const unsubscribe = firestore
       .collection('messages')
+      .orderBy('time')
       .onSnapshot(snapshot => {
         const tmp: Message[] = [];
 
@@ -22,7 +24,6 @@ const Chat: React.FC = () => {
             id: message.id,
           } as Message);
         });
-
         setMessages(tmp);
       });
 
@@ -36,6 +37,7 @@ const Chat: React.FC = () => {
   return (
     <MessagesContext.Provider value={messages}>
       <MessagesList />
+      <SendMessage />
     </MessagesContext.Provider>
   );
 };
