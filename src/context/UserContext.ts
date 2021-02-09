@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { firebaseUser } from '../services/firebase';
+import { FirebaseUser } from '../services/firebase';
 
-export const UserContext = createContext<firebaseUser | null>(null);
+export const UserContext = createContext<FirebaseUser | null>(null);

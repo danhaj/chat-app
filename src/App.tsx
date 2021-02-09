@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { auth, firebaseUser } from './services/firebase';
+import { auth, FirebaseUser } from './services/firebase';
 import { UserContext } from './context/UserContext';
 import Chat from './pages/Chat';
 import LandingPage from './pages/LandingPage';
 
 const App: React.FC = () => {
-  const [user, setUser] = useState<firebaseUser | null>(null);
-  const { Provider } = UserContext;
+  const [user, setUser] = useState<FirebaseUser | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -21,12 +20,12 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Provider value={user}>
+      <UserContext.Provider value={user}>
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/chat' component={Chat} />
         </Switch>
-      </Provider>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 };

@@ -13,7 +13,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export type FirebaseUser = firebase.User;
+
 export const firestore = firebase.firestore();
 export const FirestoreTimestamp = firebase.firestore.Timestamp;
 export const auth = firebase.auth();
-export type firebaseUser = firebase.User;

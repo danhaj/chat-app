@@ -1,19 +1,16 @@
-import React from 'react';
-import Message from './Message';
+import React, { useContext } from 'react';
+import { MessagesContext } from '../context/MessagesContext';
+import MessageCard from './MessageCard';
 
 const MessagesList: React.FC = () => {
-  const messages = [
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.`,
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.`,
-  ];
+  const messages = useContext(MessagesContext);
 
   return (
     <div className='container flex flex-col mx-auto'>
-      {messages.map(message => (
-        <Message>{message}</Message>
-      ))}
+      {messages &&
+        messages.map(message => (
+          <MessageCard key={message.id} message={message}></MessageCard>
+        ))}
     </div>
   );
 };
