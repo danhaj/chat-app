@@ -6,6 +6,7 @@ import { MessagesContext } from '../context/MessagesContext';
 import { Message } from '../types';
 import MessagesList from '../components/MessagesList';
 import SendMessage from '../components/SendMessage';
+import Header from '../components/Header';
 
 const Chat: React.FC = () => {
   const user = useContext(UserContext);
@@ -36,6 +37,7 @@ const Chat: React.FC = () => {
 
   return (
     <MessagesContext.Provider value={messages}>
+      <Header />
       <MessagesList />
       <SendMessage />
     </MessagesContext.Provider>

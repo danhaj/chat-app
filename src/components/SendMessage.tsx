@@ -22,11 +22,11 @@ const SendMessage: React.FC = () => {
   return (
     <form
       onSubmit={ev => handleSubmit(ev)}
-      className='flex items-center w-full fixed bottom-0 border-t border-gray-400 bg-white'
+      className='flex items-center w-full fixed bottom-0 border-t border-gray-400 bg-white h-16'
     >
       <input
         type='text'
-        className='w-full h-1/2 rounded-3xl m-2 border-gray-400'
+        className='w-full h-3/5 rounded-3xl m-2 border-gray-400'
         value={message}
         onChange={(ev: ChangeEvent<HTMLInputElement>) =>
           setMessage(ev.target.value)
