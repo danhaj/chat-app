@@ -10,11 +10,13 @@ const SendMessage: React.FC = () => {
   const handleSubmit = async (ev: FormEvent) => {
     ev.preventDefault();
 
-    await firestore.collection('messages').add({
-      author: user?.email,
-      value: message,
-      time: FirestoreTimestamp.now(),
-    });
+    if (user && message) {
+      await firestore.collection('messages').add({
+        author: user.email,
+        value: message,
+        time: FirestoreTimestamp.now(),
+      });
+    }
 
     setMessage('');
   };

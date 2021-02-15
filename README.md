@@ -7,6 +7,7 @@ Project is created with:
 - React
 - TypeScript
 - Context API
+- Tailwind
 - Firebase (firestore & auth)
 
 ## Watch live
